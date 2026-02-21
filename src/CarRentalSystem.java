@@ -1,3 +1,6 @@
+import Models.Car;
+import Models.Customer;
+import Models.Reservation;
 import Payment.CreditCardPaymentProcessor;
 import Payment.PaymentProcessor;
 
@@ -11,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CarRentalSystem {
     private static CarRentalSystem instance = new CarRentalSystem();
     private final Map<String,Car>cars;
-    private final Map<String,Reservation>reservationMap;
+    private final Map<String, Reservation>reservationMap;
     private final PaymentProcessor paymentProcessor;
 
     private CarRentalSystem() {
@@ -55,7 +58,7 @@ public class CarRentalSystem {
         return true;
     }
 
-    public synchronized Reservation makeReservation(Customer customer,Car car, LocalDateTime startDate, LocalDateTime endDate){
+    public synchronized Reservation makeReservation(Customer customer, Car car, LocalDateTime startDate, LocalDateTime endDate){
         if(isCarAvailable(car,startDate,endDate)){
             String reservationId = generateReservationId();
             Reservation reservation=new Reservation(endDate,startDate,customer,car,reservationId);

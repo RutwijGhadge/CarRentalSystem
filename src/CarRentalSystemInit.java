@@ -1,3 +1,7 @@
+import Models.Car;
+import Models.Customer;
+import Models.Reservation;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,13 +26,13 @@ public class CarRentalSystemInit {
             if(reservation!=null){
                 boolean paymentSuccess= carRentalSystem.processPayment(reservation);
                 if(paymentSuccess){
-                    System.out.println("Payment for Reservation is Successful with id:"+reservation.getReservationId());
+                    System.out.println("Payment for Models.Reservation is Successful with id:"+reservation.getReservationId());
                 }else{
-                    System.out.println("Payment Failed, Cancelling Reservation");
+                    System.out.println("Payment Failed, Cancelling Models.Reservation");
                     carRentalSystem.cancelReservation(reservation.getReservationId());
                 }
             }else{
-                System.out.println("Selected Car is Not Available for the Given Dates");
+                System.out.println("Selected Models.Car is Not Available for the Given Dates");
             }
         }else{
             System.out.println("No Cars Available of this type at the moment.");

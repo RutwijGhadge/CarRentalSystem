@@ -1,5 +1,6 @@
+package Models;
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 public class Reservation {

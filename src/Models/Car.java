@@ -1,3 +1,5 @@
+package Models;
+
 public class Car {
     private final String make;
     private final String model;
