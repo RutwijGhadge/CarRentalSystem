@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CarRentalSystem {
-    private static CarRentalSystem instance = new CarRentalSystem();
+    private static final CarRentalSystem instance = new CarRentalSystem();
     private final Map<String,Car>cars;
     private final Map<String, Reservation>reservationMap;
     private final PaymentProcessor paymentProcessor;
