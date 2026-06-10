@@ -19,7 +19,7 @@ public class CarRentalSystemInit {
         LocalDateTime startDate= LocalDateTime.now();
         LocalDateTime endDate= startDate.plusDays(4);
 
-        List<Car> availableCars = carRentalSystem.searchCars("Ford","Mustangs",startDate,endDate);
+        List<Car> availableCars = carRentalSystem.searchCars("Ford","Mustang",startDate,endDate);
         if(!availableCars.isEmpty()){
             Car selectedCar = availableCars.get(0);
             Reservation reservation= carRentalSystem.makeReservation(customer,selectedCar,startDate,endDate);
@@ -28,8 +28,8 @@ public class CarRentalSystemInit {
                 if(paymentSuccess){
                     System.out.println("Payment for Models.Reservation is Successful with id:"+reservation.getReservationId());
                 }else{
-                    System.out.println("Payment Failed, Cancelling Models.Reservation");
                     carRentalSystem.cancelReservation(reservation.getReservationId());
+                    System.out.println("Payment Failed, Cancelling Models.Reservation");
                 }
             }else{
                 System.out.println("Selected Models.Car is Not Available for the Given Dates");
@@ -38,5 +38,4 @@ public class CarRentalSystemInit {
             System.out.println("No Cars Available of this type at the moment.");
         }
     }
-
 }

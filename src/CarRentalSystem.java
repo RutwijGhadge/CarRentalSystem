@@ -3,6 +3,7 @@ import Models.Customer;
 import Models.Reservation;
 import Payment.CreditCardPaymentProcessor;
 import Payment.PaymentProcessor;
+import Payment.PaymentStrategy;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class CarRentalSystem {
     private static final CarRentalSystem instance = new CarRentalSystem();
     private final Map<String,Car>cars;
     private final Map<String, Reservation>reservationMap;
-    private final PaymentProcessor paymentProcessor;
+    private final PaymentStrategy paymentProcessor;
 
     private CarRentalSystem() {
         cars= new ConcurrentHashMap<>();
@@ -77,7 +78,8 @@ public class CarRentalSystem {
     }
 
     public boolean processPayment(Reservation reservation){
-        return paymentProcessor.processPayment(reservation.getTotalRent());
+        PaymentProcessor paymentProcessor1=new PaymentProcessor(new CreditCardPaymentProcessor());
+        return paymentProcessor1.processPayment(reservation.getTotalRent());
     }
 
     public String generateReservationId(){

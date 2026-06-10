@@ -1,8 +1,9 @@
 package Payment;
 
-public class CreditCardPaymentProcessor implements PaymentProcessor{
+public class CreditCardPaymentProcessor implements PaymentStrategy {
+
     @Override
-    public boolean processPayment(double amount) {
-        return true;
+    public void pay(double amount) {
+        System.out.println("Paid "+amount+" with CreditCard");
     }
 }

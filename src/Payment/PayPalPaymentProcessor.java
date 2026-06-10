@@ -1,8 +1,9 @@
 package Payment;
 
-public class PayPalPaymentProcessor implements PaymentProcessor{
+public class PayPalPaymentProcessor implements PaymentStrategy {
+
     @Override
-    public boolean processPayment(double amount) {
-        return true;
+    public void pay(double amount) {
+        System.out.println("Paid "+amount+" with the PayPal Payment Processor");
     }
 }
